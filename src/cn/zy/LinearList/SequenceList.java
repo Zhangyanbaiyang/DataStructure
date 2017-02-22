@@ -2,35 +2,29 @@ package cn.zy.LinearList;
 
 public class SequenceList implements LinearList {
 	
+	//初始化容量
+	private static final int INITIAL_CAPACITY = 16;
+	
+	//使用数组作为底层存储
 	private Object[] seqList;
 	
+	//真实容量大小
 	private int size;
 	
-	public SequenceList(int length){
-		if(length<0){
-			throw new IndexOutOfBoundsException("数值越界");
-		}
-		if(length==0){
-			this.seqList=new Object[3];
-		}
-		this.seqList=new Object[length];
-	}
-
-	public SequenceList() {  
-	   this.size=0;
+	//数组的容量
+	private int capacity;
+	
+	public SequenceList(){
+		seqList = new Object[INITIAL_CAPACITY];
 	}
 	
 	public boolean isEmpty() {
-		if(this.size==0){
-			return true;
-		}
-		return false;
+		return this.size==0;
 	}
 
 	@Override
 	public int size() {
-		
-		return this.size();
+		return this.size;
 	}
 
 	@Override
@@ -49,24 +43,29 @@ public class SequenceList implements LinearList {
 	public Object remove(int index) {
 		checkIndex(index);
 		Object old = this.get(index);
+		int count = 0;
 		for(int i=index;i<this.size-1;i++){
 			this.seqList[i] = this.seqList[i+1];
+			count++;
 		}
 		this.seqList[this.size-1]=null;
 		this.size--;
+		System.out.println(count);
 		return old;
 	}
 
 	@Override
 	public boolean add(Object element) {
+		ensureCapacity();
 		return add(this.size,element);
 	}
 
 	@Override
 	public boolean add(int index, Object element) {
 		checkIndex(index);
+		ensureCapacity();
 		for(int i=size;i>index;i--){
-			this.seqList[this.size] = this.seqList[this.size-1];
+			this.seqList[i] = this.seqList[i-1];
 		}
 		this.seqList[index] = element;
 		this.size++;		
@@ -80,26 +79,40 @@ public class SequenceList implements LinearList {
 				this.seqList[i]=null;
 			}
 		}
+		Object newData[] = new Object[0];
+		//this.seqList = newData;
 		this.size=0;
-
 	}
 	
+	public int indexof(Object t) {
+		for(int i = 0;i<this.size;i++){
+			if(this.seqList[i].equals(t)){
+				return i;
+			}
+		}
+		return -1;
+	}
+
+	@Override
+	public void display() {
+		for(int i = 0;i<this.size();i++)
+			System.out.println(this.seqList[i]);
+	}
+
 	private boolean checkIndex(int index){
 		if(index<0||index>this.size){
-			throw new IndexOutOfBoundsException("index"+index+",size"+size);
+			throw new IndexOutOfBoundsException("插入数字位置超过表长度 index"+index+",size"+size);
 		}
 		return true;
 	}
 	
-	public static void main(String args[]){
-		LinearList l = new SequenceList();
-		for(int i = 0;i<5;i++){
-			l.add(i,i);
+	//当底层数组容量不够的时候，进行自动扩容
+	private void ensureCapacity(){
+		if(size>=seqList.length){
+			Object[] newObject = new Object[seqList.length*2];
+			System.arraycopy(seqList, 0, newObject, 0, seqList.length);
+			seqList = newObject;
 		}
-		for(int i = 0;i<l.size();i++){
-			System.out.println(l.get(i));
-		}
-		
 	}
 
 }
