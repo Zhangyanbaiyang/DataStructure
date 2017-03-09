@@ -1,5 +1,7 @@
 package cn.zy.linkList;
 
+import java.util.LinkedList;
+
 public class Stack {
 	
 	private Object elements[];
@@ -63,11 +65,16 @@ public class Stack {
 		return this.elements[this.getSize()-1];
 	}
 	
-	public static void main(String args[]){
+	public static void main(String args[]) throws Exception{
 		Stack s = new Stack(10);
-		System.out.println(s.getSize());
 		s.push(1);
+		s.push(2);
+		s.push(3);
+		//s.getSize() 是动态太变化
+		for(int i = 0;i<s.getSize();i++){
+			System.out.println(s.peek());
+			s.pop();
+		}
 		System.out.println(s.getSize());
-		System.out.println();
 	}
 }
