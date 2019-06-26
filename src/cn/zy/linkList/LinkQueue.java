@@ -3,20 +3,20 @@ package cn.zy.linkList;
 import java.util.Stack;
 
 
-//Ê¹ÓÃÊı×éÊµÏÖ¶ÓÁĞ
+//Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½Ö¶ï¿½ï¿½ï¿½
 public class LinkQueue {
 	
 	private int maxSize;
 	
 	private int[] queueArray;
 	
-	//Ç°Ö¸Õë
+	//Ç°Ö¸ï¿½ï¿½
 	private int front;
 	
-	//ºóÖ¸Õë
+	//ï¿½ï¿½Ö¸ï¿½ï¿½
 	private int rear;
 	
-	//ÔªËØ¸öÊı
+	//Ôªï¿½Ø¸ï¿½ï¿½ï¿½
 	private int size;
 	
 	public LinkQueue(int s){
@@ -49,11 +49,11 @@ public class LinkQueue {
 	
 	public void insert(int s){
 		if(isFull()){
-			System.out.println("¶ÓÁĞ¿Õ¼äÒÑÂú");
+			System.out.println("ï¿½ï¿½ï¿½Ğ¿Õ¼ï¿½ï¿½ï¿½ï¿½ï¿½");
 			return;
 		}
 		
-		//±ÜÃâ³öÏÖ
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		if(rear==maxSize-1){
 			rear=-1;
 		}

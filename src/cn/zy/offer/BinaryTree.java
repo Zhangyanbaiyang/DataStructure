@@ -8,7 +8,7 @@ public class BinaryTree {
 	
 	private Node root; 
 	/**
-	 * 私有类
+	 * ?????
 	 */
 	
 	private class Node{
@@ -29,7 +29,7 @@ public class BinaryTree {
 	}
 	
 	/**
-	 * 构建二叉树
+	 * ??????????
 	 * @param args
 	 */
 	public void buildTree(Node node,int data){
@@ -37,14 +37,14 @@ public class BinaryTree {
 			root = new Node(data);
 		}else{
 			if(data<node.data){
-				//构建左二叉树
+				//???????????
 				if(node.left == null){
 					node.left = new Node(data);
 				}else{
 					buildTree(node.left,data);
 				}
 			}else{
-				//构建右二叉树
+				//???????????
 				if(node.right ==null){
 					node.right = new Node(data);
 				}else{
@@ -55,7 +55,7 @@ public class BinaryTree {
 	}
 	
 	/**
-	 * 前序遍历
+	 * ??????
 	 */
 	public void preNode(Node node){
 		if(node!=null){
@@ -67,7 +67,7 @@ public class BinaryTree {
 	}
 	
 	/**
-	 * 中序遍历
+	 * ???????
 	 */
 	public void inNode(Node node){
 		if(node!=null){
@@ -79,7 +79,7 @@ public class BinaryTree {
 	}
 	
 	/**
-	 * 后序遍历
+	 * ???????
 	 */
 	public void postNode(Node node){
 		if(node!=null){
@@ -100,11 +100,11 @@ public class BinaryTree {
 		}
 		
 		tree.preNode(tree.getRoot());
-		System.out.println("前序遍历");
+		System.out.println("??????");
 		tree.inNode(tree.getRoot());
-		System.out.println("中序遍历");
+		System.out.println("???????");
 		tree.postNode(tree.getRoot());
-		System.out.println("后序遍历");
+		System.out.println("???????");
 
 		
 	}
